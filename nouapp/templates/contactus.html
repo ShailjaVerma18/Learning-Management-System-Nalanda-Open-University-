@@ -11,17 +11,61 @@
       background-size: cover;
       background-position:center;
   }
+  .enquiry-form-wrapper {
+  background-color: aliceblue;
+  max-width: 850px;
+  margin: 50px auto 30px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+}
+
+.enquiry-title {
+  color: rgb(6,6,106);
+  text-align: center;
+  font-family: poppins, sans-serif;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  color: rgb(6,6,106);
+  font-family: poppins, sans-serif;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.submit-btn {
+  font-family: poppins, sans-serif;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .enquiry-form-wrapper {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+  .submit-btn {
+    width: 100%;
+  }
+}
+
  /*Header Image*/
  </style>
 
 <!--Header Image-->
    <div class="row">
-  <section class="home">
-      <div class="row" style="color: aliceblue;font-weight: bolder; font-family: poppins, sans-serif; padding-top: 22vh; text-align:center;">
-      <h3><b>From Our Content For Distance Learning</b></h3>
-      <p style="font-family: poppins;font-weight: bolder;">NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY</p>
-      </div>
-  </section>
+
+<section class="home">
+  <div class="home-overlay">
+    <h3>From Our Content For Distance Learning</h3>
+    <p>NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY</p>
+  </div>
+</section>
+
 </div>
 <!-- Header Image -->
 
@@ -74,67 +118,57 @@
       </script>
 
       {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{message}}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          {% endfor %}
-      {% endif %}
-      <div id="a22">
-        <h1 align="center" style="color: rgb(6,6,106); padding-bottom:10px; padding-top: 30px; font-family: poppins, sans-serif;"><b>ENQUIRY FORM</b></h1><hr>
-        <form  id="frmcontactus" action="{% url 'nouapp:contactus' %}" method="post" onsubmit="event.preventDefault();validate();">
-          {% csrf_token %}
-          
-          <table style="width:80%; margin-left:100px; margin-right:500px;">
-            <tr>
-              <td style="color:rgb(6,6,106);font-family: poppins, sans-serif;">Enter Name:
-                <input type="text" name="name" id="name" pattern="[a-zA-Z\s]+" title="Enter name using alphabet only (a-z)" class="form-control"  placeholder="Enter Name"/>
-              </td>
-            </tr>
-      
-            <tr>
-              <td style="color:rgb(6,6,106);font-family: poppins, sans-serif;">Select Gender:<br/>
-                <input type="radio"   name="gender" values="Male" class="form-check-input"/> Male &nbsp; &nbsp; &nbsp; &nbsp;
-                <input type="radio"   name="gender" values="Female" class="form-check-input"/> Female &nbsp; &nbsp; &nbsp; &nbsp;
-                <input type="radio" name="gender" value="Other" class="form-check-input"/> Other
-              </td>
-            </tr>
-      
-            <tr>
-              <td style="color:rgb(6,6,106);font-family: poppins, sans-serif;">Enter Address:
-                <textarea name="address" class="form-control" placeholder="Enter Address" ></textarea>
-              </td>
-            </tr>
-          
-            <tr>
-              <td style="color:rgb(6,6,106);font-family: poppins, sans-serif;">Enter Contact No:
-                <input type="number"   name="contactno" class="form-control"  id="contactno" placeholder="Enter Contact No."/>
-              </td>
-            </tr>
-      
-            <tr>
-              <td style="color:rgb(6,6,106);font-family: poppins, sans-serif;">Enter Emailaddress:
-                <input type="email"   name="emailaddress" class="form-control"  id="emailaddress" placeholder="example@example.com"/>
-              </td>
-            </tr>
-      
-            <tr>
-              <td style="color:rgb(6,6,106);font-family: poppins, sans-serif;">Enter Enquiry:
-                <textarea name="enquirytext" class="form-control" placeholder="Enter Enquiry" ></textarea>
-              </td>
-            </tr>
-      
-            <tr>
-              <td style="color:rgb(6,6,106); padding:10px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
-                <button type="submit" class="btn btn-primary" style="font-family: poppins, sans-serif;width: 810px;">Submit</button>
-              </td>
-            </tr>
-        
-          </table>
-        </form>
-      </div>
+  {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+  {% endfor %}
+{% endif %}
+
+<div class="enquiry-form-wrapper">
+  <h1 class="enquiry-title"><b>ENQUIRY FORM</b></h1>
+  <hr>
+  <form id="frmcontactus" action="{% url 'nouapp:contactus' %}" method="post" onsubmit="event.preventDefault();validate();">
+    {% csrf_token %}
+    <div class="form-group">
+      <label>Enter Name:</label>
+      <input type="text" name="name" id="name" pattern="[a-zA-Z\s]+" title="Enter name using alphabet only (a-z)" class="form-control" placeholder="Enter Name"/>
+    </div>
+
+    <div class="form-group">
+      <label>Select Gender:</label><br>
+      <input type="radio" name="gender" value="Male" class="form-check-input"> Male &nbsp;&nbsp;
+      <input type="radio" name="gender" value="Female" class="form-check-input"> Female &nbsp;&nbsp;
+      <input type="radio" name="gender" value="Other" class="form-check-input"> Other
+    </div>
+
+    <div class="form-group">
+      <label>Enter Address:</label>
+      <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Enter Contact No:</label>
+      <input type="number" name="contactno" id="contactno" class="form-control" placeholder="Enter Contact No."/>
+    </div>
+
+    <div class="form-group">
+      <label>Enter Email address:</label>
+      <input type="email" name="emailaddress" id="emailaddress" class="form-control" placeholder="example@example.com"/>
+    </div>
+
+    <div class="form-group">
+      <label>Enter Enquiry:</label>
+      <textarea name="enquirytext" class="form-control" placeholder="Enter Enquiry"></textarea>
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+    </div>
+  </form>
+</div>
+
     <!-- End Of Enquiry Form-->
     {% endblock body %}
 

@@ -1,247 +1,387 @@
-{% extends 'parent.html' %}
-{% load static %}
-{% block body %}
+{% extends 'parent.html' %} {% load static %} {% block body %}
 <style>
   /*Header Image*/
-  .home{
-      background-image: url(../static/images/bookslibrary.jpg);
-      width: 100%;
-      height: 35vh;
-      background-size: cover;
-      background-position: center;
+  .home {
+    background-image: url(../static/images/bookslibrary.jpg);
+    width: 100%;
+    height: 37vh;
+    background-size: cover;
+    background-position: center;
   }
- /*Header Image*/
- </style>
 
-    
-  
-    <!-- Header Image -->
-    <div class="row">
-      <section class="home">
-          <div class="row" style="color: aliceblue;font-weight: bolder; font-family: poppins, sans-serif; padding-top: 22vh; text-align:center;">
-          <h3><b>From Our Content For Distance Learning</b></h3>
-          <p style="font-family: poppins;font-weight: bolder;">NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY</p>
-          </div>
-      </section>
+  @media (max-width: 530px) and (min-width: 350px) {
+    .home h3 {
+      text-align: center;
+      font-size: 17px;
+    }
+    .home p {
+      text-align: center;
+      font-size: small;
+    }
+  }
+  /*Header Image*/
+</style>
+
+<!-- Header Image -->
+
+<!-- Header Image -->
+<div class="row">
+  <section class="home">
+    <div
+      class="row"
+      style="
+        color: aliceblue;
+        font-weight: bolder;
+        font-family: poppins, sans-serif;
+        padding-top: 22vh;
+        text-align: center;
+      "
+    >
+      <h3><b>From Our Content For Distance Learning</b></h3>
+      <p style="font-family: poppins; font-weight: bolder">
+        NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY
+      </p>
     </div>
-    <!-- Header Image -->
-    
-    <!-- Start Of Student Registration Form Section -->
-    <div class="row mt-5" style="margin-bottom:50px;">
-        {% comment %} <div class="col-sm-3" style="background-color: white;min-height: 600px;">
-            <h1 align="center"><u>News</u></h1><br/>
-            <marquee behavior="" direction="down" height="400" onmouseover="stop()" onmouseout="start()">
-                {% for n in ns %}
-                <p style="text-align: center; color:brown">{{n.newstext}}</p>
-                {% endfor %}
-            </marquee>
-        </div> {% endcomment %}
-        <div class="col-sm-9" style=" min-height: 600px;background-color: aliceblue; color:rgb(6,6,106); margin: 0 auto; border-radius:15px; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8)";>
-    <script> 
-        function validate()
-        {
-            var rollno=document.getElementById("rollno");
-            var name=document.getElementById("name");
-            var fname=document.getElementById("fname");
-            var mname=document.getElementById("mname");
-            var contactno=document.getElementById("contactno");
-            var emailaddress=document.getElementById("emailaddress");
-            var emailexp=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            var password=document.getElementById("password");
-            var confirmpassword=document.getElementById("confirmpassword");
-            if (rollno.value=='' || rollno.value==null)
-            {
-                alert('Please enter your rollno');
-                rollno.focus();
-            }
-            else if (isNaN(rollno.value))
-            {
-              alert('Please enter Number only');
-              rollno.focus();
-            }
-            else if (name.value==""|| name.value==null)
-            {
-                alert('Please enter  your name');
-                name.focus();
-            }
-            else if (fname.value=='' || fname.value==null)
-            {
-                alert('Please enter father name');
-                fname.focus();
-            }
-            else if (mname.value=='' || mname.value==null)
-            {
-                alert('Please enter mother name');
-                mname.focus();
-    
-            }
-            else if(contactno.value=="" || contactno.value==null)
-            {
-               alert('Please enter contactno');
-               contactno.focus();
-            }
-            else if (isNaN(contactno.value))
-            {
-              alert('Please enter Number only');
-              contactno.focus();
-            }
-            else if (contactno.value.length!=10)
-            {
-              alert('Please enter 10 digit No');
-              contactno.focus();
-            }
-            else if(emailaddress.value=="" || emailaddress.value==null)
-            {
-               alert('Please enter emailaddress');
-               emailaddress.focus();
-            }
-            else if (!emailexp.test(emailaddress.value))
-            {
-              alert('Please enter valid email address');
-              emailaddress.focus();
-            }
-            else if (password.value==""|| password.value==null)
-            {
-                alert('Please enter  your password');
-                password.focus();
-            }
-            else if (password.length<8)
-            {
-                alert('Please enter atleast 8 digit password')
-                password.focus();
-            }
-            else if(confirmpassword.value=="" || confirmpassword.value==null)
-            {
-               alert('Please enter confirm password');
-               confirmpassword.focus();
-            }
-            else if (confirmpassword.value!=password.value)
-            {
-                alert('Confirm passwor is not matched');
-                confirmpassword.focus();
-            }
-            else
-            {
-                document.getElementById("frmregistration").submit();
-            }
-        }
-      </script> 
-      {% if messages %}
-      {% for message in messages %}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{message}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+  </section>
+</div>
+<!-- Header Image -->
+
+<!-- Start Of Student Registration Form Section -->
+<div class="row mt-5" style="margin-bottom: 50px">
+  {% comment %}
+  <div class="col-sm-3" style="background-color: white; min-height: 600px">
+    <h1 align="center"><u>News</u></h1>
+    <br />
+    <marquee
+      behavior=""
+      direction="down"
+      height="400"
+      onmouseover="stop()"
+      onmouseout="start()"
+    >
+      {% for n in ns %}
+      <p style="text-align: center; color: brown">{{n.newstext}}</p>
       {% endfor %}
-    {% endif %}  
-    <h1 style="padding:10px; color: rgb(6,6,106); font-family: poppins,sans-serif; padding-top: 30px; padding-bottom: 10px;"align="center"><b>STUDENT REGISTRATION FORM</b></h1><hr>
-    <form class="form-group" id="frmregistration" method="post" onsubmit="event.preventDefault();validate();">
-        
-        {% csrf_token %}
-        <table  style="width:80%; margin-left:100px; margin-right:500px;font-family: poppins, sans-serif;">
-            <tr>
-                <td>Enter Roll No :</td>
-                <td><input type="number"  id="rollno" name="rollno" class="form-control" placeholder="Enter Rollno"/></td>
-            </tr>
-    
-            <tr>
-                <td>Enter Name :</td>
-                <td><input type="text" id="name" name="name" pattern="[a-zA-Z\s]+" title="Enter name using alphabet only(a-z)" class="form-control" placeholder="Enter Name" id="name"/></td>
-            </tr>
-    
-            <tr>
-                <td>Enter Father Name :</td>
-                <td><input type="text" id="fname" name="fname" pattern="[a-zA-Z\s]+" title="Enter father name using alphabet only (a-z)" class="form-control" placeholder="Enter Father Name"/></td>
-            </tr>
-    
-            <tr>
-                <td>Enter Mother Name :</td>
-                <td><input type="text" id="mname" name="mname" pattern="[a-zA-Z\s]+" title="Enter mother name using alphabet only(a-z)" class="form-control" placeholder="Enter Mother Name"/></td>
-            </tr>
-    
-            <tr>
-                <td>Select Gender:<br/> 
-                <td>
-                    <input type="radio" name="gender" value="Male" class="form-check-input"/>Male &nbsp; &nbsp; &nbsp; &nbsp;
-                    <input type="radio" name="gender" value="Female" class="form-check-input"/>Female &nbsp; &nbsp; &nbsp; &nbsp;
-                    <input type="radio" name="gender" value="Other" class="form-check-input"/> Other
-                </td>
-            </tr>
-    
-            <tr>
-                <td>Enter Address :</td>
-                <td><textarea name="address"  class="form-control" placeholder="Enter Address"></textarea></td>
-            </tr>
-    
-            <tr>
-                <td>Select Program :</td>
-                <td>
-                    <select name="program"  class="form-control">
-                        <option selected>---Select Program---</option>
-                        <option value="B.Tech.">B.Tech.</option>
-                        <option value="M.Tech.">M.Tech.</option>
-                        <option value="BBA.">BBA.</option>
-                        <option value="B.Sc.">B.Sc.</option>
-                        <option value="M.sc.">M.Sc.</option>
-                        <option value="B.A.">B.A.</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Select Branch :</td>
-                <td><select name="branch"   class="form-control">
-                        <option selected>---Select Branch---</option>
-                        <option value="Computer Science">Computer Science</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value=" Electonic">Electronic</option>
-                        <option value="Electrical">Electrical</option>
-                        <option value="Mechanical">Mechanical</option>
-                        <option value="Mechanical">Other</option>
-                    </select>
-                </td>
-            </tr>
-    
-           <tr>
-                <td>Select Year :</td>
-                <td><select name="year"   class="form-control">
-                        <option selected>---Select Year---</option>
-                        <option value="First Year">First Year</option>
-                        <option value="Second Year">Second Year</option>
-                        <option value="Third Year">Third Year</option>
-                        <option value="Final Year" >Final Year</option>
-                    </select>
-                </td>
-            </tr>
-    
-           <tr>
-                <td>Enter Contact No :</td>
-                <td><input type="text" id="contactno"   name="contactno" class="form-control" placeholder="Enter Contact No."/></td>
-            </tr>
-    
-            <tr>
-                <td>Enter Email Address :</td>
-                <td><input type="text" id="emailaddress"  name="emailaddress" class="form-control" placeholder="example@example.com"/></td>
-            </tr>
-            
-            <tr>
-                <td>Enter Password :</td>
-                <td><input type="password"  id="password" name="password" class="form-control" placeholder="Enter Password"/></td>
-            </tr>
-    
-            <tr>
-                <td>Confirm Password :</td>
-                <td><input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Confirm Password"/></td>
-            </tr>
-    
-            <tr>
-                <td style="padding:40px;">&nbsp;</td>
-                <td><button type="submit"  class="btn btn-primary" style="width: 100px;">Register</button></td>
-            </tr>
-             
-        </table>
-    </form>
-       </div>
+    </marquee>
+  </div>
+  {% endcomment %}
+  <div
+    class="col-sm-9"
+    style="
+      min-height: 600px;
+      background-color: aliceblue;
+      color: rgb(6, 6, 106);
+      margin: 0 auto;
+      border-radius: 15px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+    "
+    ;
+  >
+    <script>
+      function validate() {
+        var rollno = document.getElementById("rollno");
+        var name = document.getElementById("name");
+        var fname = document.getElementById("fname");
+        var mname = document.getElementById("mname");
+        var contactno = document.getElementById("contactno");
+        var emailaddress = document.getElementById("emailaddress");
+        var emailexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var password = document.getElementById("password");
+        var confirmpassword = document.getElementById("confirmpassword");
+        if (rollno.value == "" || rollno.value == null) {
+          alert("Please enter your rollno");
+          rollno.focus();
+        } else if (isNaN(rollno.value)) {
+          alert("Please enter Number only");
+          rollno.focus();
+        } else if (name.value == "" || name.value == null) {
+          alert("Please enter  your name");
+          name.focus();
+        } else if (fname.value == "" || fname.value == null) {
+          alert("Please enter father name");
+          fname.focus();
+        } else if (mname.value == "" || mname.value == null) {
+          alert("Please enter mother name");
+          mname.focus();
+        } else if (contactno.value == "" || contactno.value == null) {
+          alert("Please enter contactno");
+          contactno.focus();
+        } else if (isNaN(contactno.value)) {
+          alert("Please enter Number only");
+          contactno.focus();
+        } else if (contactno.value.length != 10) {
+          alert("Please enter 10 digit No");
+          contactno.focus();
+        } else if (emailaddress.value == "" || emailaddress.value == null) {
+          alert("Please enter emailaddress");
+          emailaddress.focus();
+        } else if (!emailexp.test(emailaddress.value)) {
+          alert("Please enter valid email address");
+          emailaddress.focus();
+        } else if (password.value == "" || password.value == null) {
+          alert("Please enter  your password");
+          password.focus();
+        } else if (password.length < 8) {
+          alert("Please enter atleast 8 digit password");
+          password.focus();
+        } else if (
+          confirmpassword.value == "" ||
+          confirmpassword.value == null
+        ) {
+          alert("Please enter confirm password");
+          confirmpassword.focus();
+        } else if (confirmpassword.value != password.value) {
+          alert("Confirm passwor is not matched");
+          confirmpassword.focus();
+        } else {
+          document.getElementById("frmregistration").submit();
+        }
+      }
+    </script>
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{message}}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
     </div>
-    <!-- End Of Student Registration Form Section -->
-    
-  {% endblock body %}
+    {% endfor %} {% endif %}
+
+    <!-- {% csrf_token %} -->
+
+    <div class="container mt-5">
+      <h2
+        class="text-center mb-4"
+        style="
+          color: rgb(6, 6, 106);
+          font-weight: bold;
+          font-family: poppins, sans-serif;
+        "
+      >
+        STUDENT REGISTRATION FORM
+      </h2>
+      <hr />
+      <form
+        class="p-4"
+        id="frmregistration"
+        method="post"
+        onsubmit="event.preventDefault();validate();"
+      >
+        {% csrf_token %}
+        <!-- Roll No -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Roll No :</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Roll No"
+            />
+          </div>
+        </div>
+
+        <!-- Name -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Name :</label
+          >
+          <div class="col-sm-9">
+            <input type="text" class="form-control" placeholder="Enter Name" />
+          </div>
+        </div>
+
+        <!-- Father Name -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Father Name :</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Father Name"
+            />
+          </div>
+        </div>
+
+        <!-- Mother Name -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Mother Name :</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Mother Name"
+            />
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Select Gender :</label
+          >
+          <div class="col-sm-9 d-flex align-items-center">
+            <div class="form-check me-3">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="male"
+              />
+              <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check me-3">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="female"
+              />
+              <label class="form-check-label" for="female">Female</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="gender"
+                id="other"
+              />
+              <label class="form-check-label" for="other">Other</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Address :</label
+          >
+          <div class="col-sm-9">
+            <textarea
+              class="form-control"
+              rows="2"
+              placeholder="Enter Address"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Program -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Select Program :</label
+          >
+          <div class="col-sm-9">
+            <select class="form-select">
+              <option>---Select Program---</option>
+              <option>B.Tech</option>
+              <option>M.Tech</option>
+              <option>MBA</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Branch -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Select Branch :</label
+          >
+          <div class="col-sm-9">
+            <select class="form-select">
+              <option>---Select Branch---</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Information Technology">
+                Information Technology
+              </option>
+              <option value=" Electonic">Electronic</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Mechanical">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Year -->
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Select Year :</label
+          >
+          <div class="col-sm-9">
+            <select class="form-select">
+              <option>---Select Year---</option>
+              <option value="First Year">First Year</option>
+              <option value="Second Year">Second Year</option>
+              <option value="Third Year">Third Year</option>
+              <option value="Final Year">Final Year</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Contact No :</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Contact Name"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Email Address :</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="example@example.com"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Enter Password :</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Password"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label" style="color: rgb(6, 6, 106)"
+            >Confirm Password:</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Confirm Password"
+            />
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Of Student Registration Form Section -->
+
+{% endblock body %}

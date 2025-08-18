@@ -1,7 +1,6 @@
-{% extends 'parent.html' %}
-{% load static %}
-{% block body %}
+{% extends 'parent.html' %} {% load static %} {% block body %}
 <style>
+
   /* Container */
 .container {
     width: 100%;
@@ -18,11 +17,26 @@
 
 /* Headings h4 */
 h4 {
+
+  .container {
+    width: 100%;
+  }
+  .container h1 {
+    text-align: center;
+    color: rgb(6, 6, 106);
+    font-weight: bold;
+    padding-top: 10vh;
+    font-family: poppins, sans-serif;
+    background-color: white;
+  }
+  h4 {
+
     text-align: left;
     color: black;
     font-weight: bold;
     padding-top: 5vh;
     padding-left: 5px;
+
     font-family: 'Poppins', sans-serif;
 }
 
@@ -45,191 +59,316 @@ h4 {
 }
 
  /*Header Image End*/
+
+    font-family: poppins, sans-serif;
+  }
+
+  @media (max-width: 600px) {
+    .row .col-sm-3 {
+      padding-left: 0px;
+      margin-top: 8vh;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-right: 0px;
+      align-content: center;
+    }
+  }
+  @media (max-width: 530px) and (min-width: 350px) {
+    .home h3 {
+      text-align: center;
+      font-size: 17px;
+    }
+    .home p {
+      text-align: center;
+      font-size: small;
+    }
+  }
+
+  /*Header Image*/
+  .home {
+    background-image: url(../static/images/bookslibrary.jpg);
+    width: 100%;
+    height: 37vh;
+    background-size: cover;
+    background-position: center;
+  }
+  /*Header Image End*/
+
 </style>
 
 <!--Header Image-->
 <div class="row">
   <section class="home">
-      <div class="row" style="color: aliceblue;font-weight: bolder; font-family: poppins, sans-serif; padding-top: 22vh; text-align:center;">
+    <div
+      class="row"
+      style="
+        color: aliceblue;
+        font-weight: bolder;
+        font-family: poppins, sans-serif;
+        padding-top: 22vh;
+        text-align: center;
+      "
+    >
       <h3><b>From Our Content For Distance Learning</b></h3>
-      <p style="font-family: poppins;font-weight: bolder;">NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY</p>
-      </div>
+      <p style="font-family: poppins; font-weight: bolder">
+        NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY
+      </p>
+    </div>
   </section>
 </div>
 <!--header image end-->
 
 <div class="container">
-  <div class="course-title"><h1>COURSES</h1><hr></div>
+  <div class="course-title">
+    <h1>COURSES</h1>
+    <hr />
+  </div>
   <!--Row 1-->
-  <h4 style="padding-top: 5vh;">UG COURSES</h4>
+  <h4 style="padding-top: 5vh">UG COURSES</h4>
   <div class="row">
     <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-            <img class="card-img-top" src="{% static 'images/bba.png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Bachelor in Business Administrat.</p>
-              <p class="card-text">Under Graduation Course</p>
-              <p class="card-text">Duration: 3 years</p>
-            </div>
-          </div>
-        </div>
-    <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-            <img class="card-img-top" src="{% static 'images/bca.png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Bachelor in Computer Application</p>
-              <p class="card-text">Under Graduation Course</p>
-              <p class="card-text">Duration: 3 years</p>
-            </div>
-          </div>
-        </div>
-    <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-            <img class="card-img-top" src="{% static 'images/bag.png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Bachelor in Arts(Geography)</p>
-              <p class="card-text">Under Graduation Course</p>
-              <p class="card-text">Duration: 3 years</p>
-            </div>
-          </div>
-        </div>
-    <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;" >
-            <img class="card-img-top" src="{% static 'images/bcom.png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Bachelor of Commerce</p>
-              <p class="card-text">Under Graduation Course</p>
-              <p class="card-text">Duration: 3 years</p>
-            </div>
-          </div>
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/bba.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Bachelor in Business Administrat.
+          </p>
+          <p class="card-text">Under Graduation Course</p>
+          <p class="card-text">Duration: 3 years</p>
         </div>
       </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/bca.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Bachelor in Computer Application
+          </p>
+          <p class="card-text">Under Graduation Course</p>
+          <p class="card-text">Duration: 3 years</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/bag.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Bachelor in Arts(Geography)
+          </p>
+          <p class="card-text">Under Graduation Course</p>
+          <p class="card-text">Duration: 3 years</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/bcom.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Bachelor of Commerce
+          </p>
+          <p class="card-text">Under Graduation Course</p>
+          <p class="card-text">Duration: 3 years</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--ROW 1 END-->
 
-
   <!--ROW 2 -->
-  <h4 style="padding-top: 10vh;">PG COURSES</h4>
+  <h4 style="padding-top: 10vh">PG COURSES</h4>
   <div class="row">
     <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-            <img class="card-img-top" src="{% static 'images/ma(environmental).png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Master of Arts (Environmental Sci.)</p>
-              <p class="card-text">Post Graduation Course</p>
-              <p class="card-text">Duration: 2 years</p>
-            </div>
-          </div>
-        </div>
-    <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-            <img class="card-img-top" src="{% static 'images/ma(sanskrit).png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Master of Arts (Sanskrit)</p>
-              <p class="card-text">Post Graduation Course</p>
-              <p class="card-text">Duration: 2 years</p>
-            </div>
-          </div>
-        </div>
-    <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-            <img class="card-img-top" src="{% static 'images/mca.png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Master in Computer Application</p>
-              <p class="card-text">Post Graduation Course</p>
-              <p class="card-text">Duration: 2 years</p>
-            </div>
-          </div>
-        </div>
-    <div class="col-sm-3">
-        <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-            <img class="card-img-top" src="{% static 'images/mcom.png' %}" alt="Card image cap">
-            <div class="card-body" style="text-align: center; font-weight: bolder;">
-              <p class="card-text" style="color: rgb(6,6,106);">Master of Commerce</p>
-              <p class="card-text">Post Graduation Course</p>
-              <p class="card-text">Duration: 2 years</p>
-            </div>
-          </div>
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/ma(environmental).png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Master of Arts (Environmental Sci.)
+          </p>
+          <p class="card-text">Post Graduation Course</p>
+          <p class="card-text">Duration: 2 years</p>
         </div>
       </div>
-      <!--ROW2 END-->
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/ma(sanskrit).png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Master of Arts (Sanskrit)
+          </p>
+          <p class="card-text">Post Graduation Course</p>
+          <p class="card-text">Duration: 2 years</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/mca.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Master in Computer Application
+          </p>
+          <p class="card-text">Post Graduation Course</p>
+          <p class="card-text">Duration: 2 years</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/mcom.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Master of Commerce
+          </p>
+          <p class="card-text">Post Graduation Course</p>
+          <p class="card-text">Duration: 2 years</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--ROW2 END-->
 
-      <!--ROW3-->
+  <!--ROW3-->
 
-      <h4 style="padding-top: 10vh;">DIPLOMA COURSES</h4>
-      <div class="row" style= "padding-bottom: 25px;">
-        <div class="col-sm-3">
-            <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-                <img class="card-img-top" src="{% static 'images/pgdfm.png' %}" alt="Card image cap">
-                <div class="card-body" style="text-align: center; font-weight: bolder;">
-                  <p class="card-text" style="color: rgb(6,6,106);">PG Diploma in Financial Management</p>
-                  <p class="card-text">Diploma Course</p>
-                  <p class="card-text">Duration: 2 years</p>
-                </div>
-              </div>
-            </div>
-        <div class="col-sm-3">
-            <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-                <img class="card-img-top" src="{% static 'images/pgdhet.png' %}" alt="Card image cap">
-                <div class="card-body" style="text-align: center; font-weight: bolder;">
-                  <p class="card-text" style="color: rgb(6,6,106);">Post Graduation Diploma (Hindi-English Translate)</p>
-                  <p class="card-text">Diploma Course</p>
-                  <p class="card-text">Duration: 2 years</p>
-                </div>
-              </div>
-            </div>
-        <div class="col-sm-3">
-            <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;">
-                <img class="card-img-top" src="{% static 'images/pgdmm.png' %}" alt="Card image cap">
-                <div class="card-body" style="text-align: center; font-weight: bolder;">
-                  <p class="card-text" style="color: rgb(6,6,106);">Post Graduation Diploma (Marketing Management)</p>
-                  <p class="card-text">Diploma Course</p>
-                  <p class="card-text">Duration: 2 years</p>
-                </div>
-              </div>
-            </div>
-        <div class="col-sm-3">
-            <div class="card" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius:5%;" >
-                <img class="card-img-top" src="{% static 'images/pgdys.png' %}" alt="Card image cap">
-                <div class="card-body" style="text-align: center; font-weight: bolder;">
-                  <p class="card-text" style="color: rgb(6,6,106);">Post Graduation Diploma (Yogic Studies)</p>
-                  <p class="card-text">Diploma Course</p>
-                  <p class="card-text">Duration: 2 years</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
+  <h4 style="padding-top: 10vh">DIPLOMA COURSES</h4>
+  <div class="row" style="padding-bottom: 25px">
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/pgdfm.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            PG Diploma in Financial Management
+          </p>
+          <p class="card-text">Diploma Course</p>
+          <p class="card-text">Duration: 2 years</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/pgdhet.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Post Graduation Diploma (Hindi-English Translate)
+          </p>
+          <p class="card-text">Diploma Course</p>
+          <p class="card-text">Duration: 2 years</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/pgdmm.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Post Graduation Diploma (Marketing Management)
+          </p>
+          <p class="card-text">Diploma Course</p>
+          <p class="card-text">Duration: 2 years</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div
+        class="card"
+        style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6); border-radius: 5%"
+      >
+        <img
+          class="card-img-top"
+          src="{% static 'images/pgdys.png' %}"
+          alt="Card image cap"
+        />
+        <div class="card-body" style="text-align: center; font-weight: bolder">
+          <p class="card-text" style="color: rgb(6, 6, 106)">
+            Post Graduation Diploma (Yogic Studies)
+          </p>
+          <p class="card-text">Diploma Course</p>
+          <p class="card-text">Duration: 2 years</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock body %}

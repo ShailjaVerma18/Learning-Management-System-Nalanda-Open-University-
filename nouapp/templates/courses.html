@@ -1,5 +1,23 @@
 {% extends 'parent.html' %} {% load static %} {% block body %}
 <style>
+
+  /* Container */
+.container {
+    width: 100%;
+}
+
+.container h1 {
+    text-align: center;
+    color: rgb(6,6,106);
+    font-weight: bold;
+    padding-top: 10vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: white; /* preserves your original background */
+}
+
+/* Headings h4 */
+h4 {
+
   .container {
     width: 100%;
   }
@@ -12,11 +30,36 @@
     background-color: white;
   }
   h4 {
+
     text-align: left;
     color: black;
     font-weight: bold;
     padding-top: 5vh;
     padding-left: 5px;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+    .row .col-sm-3 {
+        padding: 0;
+        margin-top: 8vh;
+        align-content: center;
+    }
+}
+
+/* Header Image */
+.home {
+    background-image: url(../static/images/bookslibrary.jpg);
+    width: 100%;
+    height: 35vh;
+    background-size: cover;
+    background-position: center;
+}
+
+ /*Header Image End*/
+
     font-family: poppins, sans-serif;
   }
 
@@ -50,6 +93,7 @@
     background-position: center;
   }
   /*Header Image End*/
+
 </style>
 
 <!--Header Image-->

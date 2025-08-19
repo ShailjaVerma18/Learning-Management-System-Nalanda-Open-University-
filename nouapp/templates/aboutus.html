@@ -1,5 +1,62 @@
 {% extends 'parent.html' %} {% load static %} {% block body %}
 <style>
+
+    /* Container */
+.container {
+    width: 100%;
+}
+
+.container h1 {
+    text-align: center;
+    color: rgb(6,6,106); /* original color */
+    font-weight: bold;
+    padding-top: 10vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Columns */
+.col-sm-5 {
+    position: relative;
+    padding: 30px 15px 10px 15px; /* top right bottom left */
+}
+
+.col-sm-7 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 17.5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Images in col-sm-5 */
+.col-sm-5 img {
+    width: 100%;
+    height: 70%;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+    .col-sm-7 {
+        flex-direction: column;
+        text-align: justify; /* keep justified for readability */
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
+    .col-sm-5 {
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
+}
+
+/* Header Image */
+.home {
+    background-image: url(../static/images/bookslibrary.jpg);
+    width: 100%;
+    height: 35vh;
+    background-size: cover;
+    background-position: center;
+}
+
+
   .container {
     width: 100%;
   }
@@ -51,6 +108,7 @@
     }
   }
 
+
   /*Header Image*/
   .home {
     background-image: url(../static/images/bookslibrary.jpg);
@@ -62,7 +120,53 @@
   /*Header Image End*/
 </style>
 <!--Header Image-->
+<!-- Home Section -->
 <div class="row">
+
+    <section class="home">
+        <div class="row" style="color: aliceblue; font-weight: bolder; font-family: poppins, sans-serif; padding-top: 22vh; text-align:center;">
+            <h3><b>From Our Content For Distance Learning</b></h3>
+            <p style="font-family: poppins; font-weight: bolder;">
+                NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY
+            </p>
+        </div>
+    </section>
+</div>
+
+<!-- About Section -->
+<section class="aboutus">
+    <div class="container">
+        <div class="row">
+            <div class="about-title">
+                <h1>ABOUT PORTAL</h1>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="{% static 'images/about.png' %}" class="img-fluid" style="height:50%;">
+            </div>
+            <div class="col-sm-7" style="text-align: justify;">
+                <p>
+                    The objective to design the portal is to facilitate “E-learning System to the students for the learning purpose from a remote location". 
+                    The Portal is a Secure, Robust Web Application for E-Learning.
+                </p>
+                <p>
+                    NOU-E-Gyan Portal is a Learning Management System (LMS) for colleges, institutions, and study centers for continuous teaching to students in the current crisis and future situations. 
+                    The portal is user-friendly & easy to access.
+                </p>
+                <p>
+                    The portal is accessible from anywhere in the world if the system grants user permission. It is fully secured and accessible 24 x 7 to authorized users. 
+                    It resolves academic issues such as E-content Distribution, Delivery, Tracking, Assessment, Progress Monitoring & Controlling of all stakeholders of the portal i.e. students, teachers, study centre administrators, as well as Nalanda Open University Admins remotely.
+                </p>
+            </div>            
+        </div>
+    </div>
+</section>
+
+
+{% endblock body %}
+
   <section class="home">
     <div
       class="row"

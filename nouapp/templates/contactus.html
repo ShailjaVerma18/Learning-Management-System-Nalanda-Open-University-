@@ -19,6 +19,63 @@
     }
   }
 
+  .enquiry-form-wrapper {
+  background-color: aliceblue;
+  max-width: 850px;
+  margin: 50px auto 30px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+}
+
+.enquiry-title {
+  color: rgb(6,6,106);
+  text-align: center;
+  font-family: poppins, sans-serif;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  color: rgb(6,6,106);
+  font-family: poppins, sans-serif;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.submit-btn {
+  font-family: poppins, sans-serif;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .enquiry-form-wrapper {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+ /*Header Image*/
+ </style>
+
+<!--Header Image-->
+   <div class="row">
+
+<section class="home">
+  <div class="home-overlay">
+    <h3>From Our Content For Distance Learning</h3>
+    <p>NOU-e-Gyan PORTAL, CONCEPT BY NALANDA OPEN UNIVERSITY</p>
+  </div>
+</section>
+
+
+
   /*Header Image*/
 </style>
 
@@ -41,6 +98,7 @@
       </p>
     </div>
   </section>
+
 </div>
 <!-- Header Image -->
 
@@ -87,25 +145,62 @@
       }
     </script>
 
-    {% if messages %} {% for message in messages %}
+      {% if messages %}
+  {% for message in messages %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>{{message}}</strong>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    {% endfor %} {% endif %}
-    <div id="a22" class="container mt-4">
-      <h1
-        class="text-center text-primary mb-3"
-        style="font-family: poppins, sans-serif"
-      >
-        <b style="color: rgb(6, 6, 106)">ENQUIRY FORM</b>
-      </h1>
-      <hr />
+  {% endfor %}
+{% endif %}
+
+<div class="enquiry-form-wrapper">
+  <h1 class="enquiry-title"><b>ENQUIRY FORM</b></h1>
+  <hr>
+  <form id="frmcontactus" action="{% url 'nouapp:contactus' %}" method="post" onsubmit="event.preventDefault();validate();">
+    {% csrf_token %}
+    <div class="form-group">
+      <label>Enter Name:</label>
+      <input type="text" name="name" id="name" pattern="[a-zA-Z\s]+" title="Enter name using alphabet only (a-z)" class="form-control" placeholder="Enter Name"/>
+    </div>
+
+    <div class="form-group">
+      <label>Select Gender:</label><br>
+      <input type="radio" name="gender" value="Male" class="form-check-input"> Male &nbsp;&nbsp;
+      <input type="radio" name="gender" value="Female" class="form-check-input"> Female &nbsp;&nbsp;
+      <input type="radio" name="gender" value="Other" class="form-check-input"> Other
+    </div>
+
+    <div class="form-group">
+      <label>Enter Address:</label>
+      <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Enter Contact No:</label>
+      <input type="number" name="contactno" id="contactno" class="form-control" placeholder="Enter Contact No."/>
+    </div>
+
+    <div class="form-group">
+      <label>Enter Email address:</label>
+      <input type="email" name="emailaddress" id="emailaddress" class="form-control" placeholder="example@example.com"/>
+    </div>
+
+    <div class="form-group">
+      <label>Enter Enquiry:</label>
+      <textarea name="enquirytext" class="form-control" placeholder="Enter Enquiry"></textarea>
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+    </div>
+  </form>
+</div>
+
+    <!-- End Of Enquiry Form-->
+    {% endblock body %}
+
+  
 
       <form
         id="frmcontactus"

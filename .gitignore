@@ -1,13 +1,41 @@
-# Python cache
+# Python
 __pycache__/
 *.pyc
-
-# Django database
-db.sqlite3
-
-# Virtual environment
+*.pyo
+*.pyd
+.Python
+env/
 venv/
 
-# Misc files
+# Django
+db.sqlite3
+/media/
+/static/
+
+# Environment variables
+.env
+.flaskenv
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
 *.log
-*.DS_Store
+*.tmp
+
+# Test coverage
+.coverage
+.coverage.*
+htmlcov/
+
+# Distribution / build
+dist/
+build/
+*.egg-info/

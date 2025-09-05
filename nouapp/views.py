@@ -44,10 +44,21 @@ def set_theme(request):
     request.session['theme'] = theme
     return JsonResponse({'status': 'ok'})
 
+from rest_framework import generics
+from .serializers import StudentSerializer
+
+class StudentListCreateView(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class StudentRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    lookup_field = 'rollno' # Assuming rollno is the primary key for Student model
+
 # Create your views here.
 def index(request):
-    ns=News.objects.all()
-    return render(request,"index.html",locals())
+
 
 def aboutus(request):
     ns=News.objects.all()

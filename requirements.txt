@@ -60,10 +60,69 @@ django-redis>=5.2.0
 # API Documentation (if REST APIs are used)
 drf-yasg>=1.21.5
 
+# Core Django Framework
+Django==4.2.1
+djangorestframework==3.14.0
+
+# Database
+# SQLite is built into Python, but for PostgreSQL support:
+psycopg2-binary==2.9.9
+
+# User Authentication & Authorization
+django-allauth==0.54.0
+
+# File Upload & Media Handling
+Pillow==10.0.0
+django-storages==1.13.2
+
+# Forms & Validation
+django-crispy-forms==2.0
+crispy-bootstrap4==2022.1
+
+# Admin Interface Enhancements
+django-grappelli==3.0.4
+
+# Timezone Support
+pytz==2023.3
+
+# Development Tools
+python-decouple==3.8
+django-debug-toolbar==4.0.0
+
+# Security
+django-cors-headers==4.0.0
+
+# Web Server for Production (optional)
+gunicorn==20.1.0
+whitenoise==6.4.0
+
+# Date & Time Processing
+python-dateutil==2.8.2
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# PDF Generation (for reports/certificates)
+reportlab==4.0.0
+
+# Excel File Support (for data import/export)
+openpyxl==3.1.2
+xlsxwriter==3.0.0
+
+# Email Backend
+django-ses==3.5.0
+
+# Caching (optional)
+django-redis==5.2.0
+
+# API Documentation (if REST APIs are used)
+drf-yasg==1.21.5
+
 # ===== NLP & Machine Learning (Chatbot) =====
-nltk>=3.8.0
-scikit-learn>=1.2.0
-numpy>=1.24.0
-scipy>=1.10.0
-threadpoolctl>=3.1.0
-joblib>=1.2.0
+nltk==3.8.1
+scikit-learn==1.2.2
+numpy==1.24.3
+scipy==1.10.1
+threadpoolctl==3.1.0
+joblib==1.2.0
+

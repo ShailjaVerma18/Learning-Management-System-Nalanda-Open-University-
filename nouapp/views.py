@@ -28,7 +28,6 @@ def set_theme(request):
     request.session['theme'] = theme
     return JsonResponse({'status': 'ok'})
 
-
 # Home & Info Pages
 def index(request):
     ns = News.objects.all()
@@ -43,7 +42,6 @@ def courses(request):
 
 def services(request):
     return render(request, "services.html")
-
 
 # Registration
 def registration(request):
@@ -87,7 +85,6 @@ def registration(request):
         'year': year
     })
 
-
 # Login
 def login(request):
     ns = News.objects.all()
@@ -106,7 +103,6 @@ def login(request):
             messages.error(request, 'Invalid user credentials.')
 
     return render(request, "login.html", {'ns': ns})
-
 
 # Contact
 def contactus(request):
@@ -130,55 +126,3 @@ def contactus(request):
         messages.success(request, 'Your Enquiry is submitted successfully.')
 
     return render(request, "contactus.html", {'ns': ns})
-
-
-# Forgot Password (Custom view to send email)
-def forgot_password(request):
-    if request.method == "POST":
-        email = request.POST.get('email')
-        try:
-            user = User.objects.get(email=email)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            token = default_token_generator.make_token(user)
-            reset_link = request.build_absolute_uri(
-                reverse('nouapp:password_reset_confirm', kwargs={'uidb64': uid, 'token': token})
-            )
-
-            send_mail(
-                "Password Reset Request",
-                f"Hi {user.username},\n\nClick the link below to reset your password:\n{reset_link}",
-                settings.EMAIL_HOST_USER,
-                [email],
-                fail_silently=False,
-            )
-            messages.success(request, "Password reset link has been sent to your email.")
-            return redirect('nouapp:login')
-        except User.DoesNotExist:
-            messages.error(request, "No account found with this email.")
-
-    return render(request, "forgot_password.html")
-
-
-# Reset Password (Custom view if you want your own template)
-def reset_password(request, uidb64, token):
-    try:
-        uid = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
-
-    if user is not None and default_token_generator.check_token(user, token):
-        if request.method == "POST":
-            new_password = request.POST.get("new_password1")
-            confirm_password = request.POST.get("new_password2")
-            if new_password == confirm_password:
-                user.set_password(new_password)
-                user.save()
-                messages.success(request, "Your password has been reset successfully.")
-                return redirect("nouapp:login")
-            else:
-                messages.error(request, "Passwords do not match.")
-        return render(request, "reset_password.html", {"validlink": True})
-    else:
-        messages.error(request, "Invalid or expired reset link.")
-        return render(request, "reset_password.html", {"validlink": False})

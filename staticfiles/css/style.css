@@ -16,6 +16,11 @@
 [data-bs-theme="light"] .navbar-nav .nav-link {
   color: #212529 !important; /* dark text for light mode */
 }
+/* UPDATED: Active link style for light mode */
+[data-bs-theme="light"] .navbar-nav .nav-link.active {
+  font-weight: 600; /* Bolder text */
+  color: #d9534f !important; /* A distinct red color */
+}
 
 [data-bs-theme="dark"] .navbar {
   background-color: #000000 !important;
@@ -23,12 +28,12 @@
 [data-bs-theme="dark"] .navbar-nav .nav-link {
   color: #f8f9fa !important; /* white text for dark mode */
 }
-
-/* Active navbar link */
-.navbar-nav .nav-link.active {
-  font-weight: bold;
-  text-decoration: underline;
+/* UPDATED: Active link style for dark mode */
+[data-bs-theme="dark"] .navbar-nav .nav-link.active {
+  font-weight: 600; /* Bolder text */
+  color: #ff6b6b !important; /* A bright red for high contrast */
 }
+
 
 /* ================= General Text ================= */
 .about-section,

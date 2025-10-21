@@ -19,39 +19,35 @@
 
   /* Hero Section */
   .home {
-    background-image: linear-gradient(rgba(30, 64, 175, 0.6), rgba(30, 58, 138, 0.6)), url(../static/images/bookslibrary.jpg);
+    background-image: linear-gradient(rgba(30, 64, 175, 0.5), rgba(30, 58, 138, 0.6)),
+                  url(../static/images/bookslibrary.jpg);
     width: 100%;
-    min-height: 37vh;
+    min-height: 40vh;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
     position: relative;
     overflow: hidden;
+    padding: 3rem 1rem;
   }
 
-  .home h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    animation: fadeInDown 1s ease-out;
+  .home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.2), transparent);
+    animation: pulse 4s ease-in-out infinite;
   }
 
-  .home p {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 0.5rem;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-    animation: fadeInUp 1s ease-out 0.3s both;
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
   }
-
-  @keyframes fadeInDown { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
-  @keyframes fadeInUp { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
 
   .hero-content {
     position: relative;
@@ -62,7 +58,7 @@
     max-width: 1000px;
     width: 100%;
   }
-  
+
   .hero-content h3 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -76,17 +72,49 @@
     gap: 0.75rem;
     flex-wrap: wrap;
   }
-  
+
   .hero-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    flex-shrink: 0;
     display: inline-block;
   }
 
   .hero-text {
     display: inline-block;
-    flex: 1;
-    min-width: 0;
   }
+
+  .hero-content p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    opacity: 0.95;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out 0.3s both;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
 
   /* Login Form Container */
   .login-container {
@@ -129,17 +157,15 @@
   /* Form Body */
   .form-body {
     padding: 2.5rem;
-    /* make body blend with container instead of a separate grey panel */
     background: transparent;
   }
   
   .form-section {
-    /* keep content card spacing while visually blending into surrounding area */
     background: transparent;
     padding: 2rem;
     border-radius: 16px;
     box-shadow: none;
-    border: 1px solid rgba(30,64,175,0.06); /* very subtle divider */
+    border: 1px solid rgba(30,64,175,0.06);
   }
   
   /* Form Inputs */
@@ -442,65 +468,92 @@
     }
   }
 
+  @media (max-width: 992px) {
+    .home {
+      min-height: 35vh;
+      padding: 2.5rem 1rem;
+    }
+
+    .hero-content h3 {
+      font-size: 2rem;
+    }
+
+    .hero-icon {
+      font-size: 2rem;
+    }
+
+    .hero-content p {
+      font-size: 1.125rem;
+    }
+
+    .login-container {
+      max-width: 90%;
+      margin: 2.5rem auto 4rem auto;
+    }
+  }
+
   @media (max-width: 768px) {
     .home {
       min-height: 30vh;
-    }
-    
-    .home h3 { 
-      font-size: 1.5rem;
-      gap: 0.5rem;
-    }
-    
-    .home p { 
-      font-size: 0.85rem;
+      padding: 2rem 1rem;
     }
     
     .hero-content {
       padding: 1rem;
     }
     
-    .hero-icon {
-      font-size: 2rem;
+    .hero-content h3 { 
+      font-size: 1.5rem;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
     
-    .login-container { 
+    .hero-icon {
+      font-size: 1.5rem;
+    }
+    
+    .hero-content p { 
+      font-size: 0.938rem;
+      line-height: 1.5;
+    }
+
+    .login-container {
       margin: 1.5rem 1rem 3rem 1rem;
       border-radius: 16px;
     }
-    
+
     .form-header {
-      padding: 1.5rem 1rem;
+      padding: 1.75rem 1.25rem;
     }
-    
-    .form-heading { 
-      font-size: 1.4rem;
+
+    .form-heading {
+      font-size: 1.5rem;
     }
-    
+
     .form-subheading {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
-    
-    .form-body { 
-      padding: 1.25rem;
+
+    .form-body {
+      padding: 1.5rem 1.25rem;
     }
-    
-    .form-section { 
-      padding: 1.25rem;
+
+    .form-section {
+      padding: 1.5rem;
       border-radius: 12px;
     }
-    
-    .submit-section { 
-      padding: 1.25rem;
+
+    .submit-section {
+      padding: 1.5rem 1.25rem;
     }
-    
+
     .submit-btn {
-      padding: 0.85rem 2rem;
+      padding: 0.9rem 2rem;
       font-size: 0.95rem;
     }
-    
+
     .form-control, .form-select {
-      padding: 0.7rem 0.9rem 0.7rem 2.5rem;
+      padding: 0.75rem 0.9rem 0.75rem 2.6rem;
       font-size: 0.9rem;
       margin-bottom: 1rem;
     }
@@ -513,28 +566,140 @@
       font-size: 1rem;
       left: 0.9rem;
     }
-    
+
     .form-label {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
+      margin-bottom: 0.4rem;
     }
 
     .form-links p {
+      font-size: 0.875rem;
+      margin: 0.65rem 0;
+    }
+
+    .divider {
+      margin: 1.25rem 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .home {
+      min-height: 28vh;
+      padding: 1.5rem 0.75rem;
+    }
+
+    .hero-content {
+      padding: 0.75rem 0.5rem;
+    }
+
+    .hero-content h3 {
+      font-size: 1.25rem;
+      gap: 0.4rem;
+      line-height: 1.3;
+      margin-bottom: 0.875rem;
+    }
+
+    .hero-icon {
+      font-size: 1.25rem;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-content p {
+      font-size: 0.813rem;
+      line-height: 1.4;
+    }
+
+    .login-container {
+      margin: 1rem 0.75rem 2rem 0.75rem;
+      border-radius: 14px;
+    }
+
+    .form-header {
+      padding: 1.5rem 1rem;
+    }
+
+    .form-heading {
+      font-size: 1.35rem;
+    }
+
+    .form-subheading {
+      font-size: 0.85rem;
+    }
+
+    .form-body {
+      padding: 1.25rem 1rem;
+    }
+
+    .form-section {
+      padding: 1.25rem;
+      border-radius: 10px;
+    }
+
+    .submit-section {
+      padding: 1.25rem 1rem;
+    }
+
+    .submit-btn {
+      padding: 0.8rem 1.75rem;
       font-size: 0.9rem;
+    }
+
+    .form-control, .form-select {
+      padding: 0.7rem 0.85rem 0.7rem 2.5rem;
+      font-size: 0.875rem;
+      border-radius: 9px;
+      margin-bottom: 0.9rem;
+    }
+
+    .input-icon {
+      font-size: 0.95rem;
+      left: 0.85rem;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .form-links p {
+      font-size: 0.813rem;
+      margin: 0.6rem 0;
+    }
+
+    .form-links a {
+      font-size: 0.813rem;
+    }
+
+    .divider {
+      margin: 1rem 0;
+    }
+
+    .divider span {
+      font-size: 0.8rem;
+      padding: 0 0.75rem;
     }
   }
 
   @media (max-width: 480px) {
-    .home h3 { 
-      font-size: 1.25rem;
-      flex-direction: column;
-      gap: 0.3rem;
+    .home {
+      min-height: 26vh;
+      padding: 1.25rem 0.5rem;
+    }
+    
+    .hero-content h3 { 
+      font-size: 1.125rem;
+      gap: 0.35rem;
     }
     
     .hero-icon {
-      font-size: 1.5rem;
+      font-size: 1.125rem;
     }
     
-    .home p { 
+    .hero-content p { 
       font-size: 0.75rem;
     }
     
@@ -588,20 +753,114 @@
     }
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 400px) {
+    .home {
+      min-height: 26vh;
+      padding: 1.25rem 0.5rem;
+    }
+
+    .hero-content h3 {
+      font-size: 1rem;
+      gap: 0.35rem;
+    }
+
+    .hero-icon {
+      font-size: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 0.688rem;
+    }
+
+    .login-container {
+      margin: 0.75rem 0.5rem 1.75rem 0.5rem;
+      border-radius: 12px;
+    }
+
+    .form-header {
+      padding: 1.25rem 0.85rem;
+    }
+
     .form-heading {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       letter-spacing: 0.3px;
     }
-    
-    .form-body {
-      padding: 0.75rem;
+
+    .form-subheading {
+      font-size: 0.8rem;
     }
-    
+
+    .form-body {
+      padding: 1rem 0.85rem;
+    }
+
     .form-section {
-      padding: 0.85rem;
+      padding: 1rem 0.9rem;
+    }
+
+    .submit-section {
+      padding: 1rem 0.85rem;
+    }
+
+    .submit-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    .form-control, .form-select {
+      padding: 0.65rem 0.8rem 0.65rem 2.4rem;
+      font-size: 0.85rem;
+    }
+
+    .input-icon {
+      font-size: 0.9rem;
+      left: 0.8rem;
+    }
+
+    .form-label {
+      font-size: 0.813rem;
     }
   }
+ 
+  @media (max-width: 360px) {
+    .hero-content h3 {
+      font-size: 0.938rem;
+    }
+
+    .hero-icon {
+      font-size: 0.938rem;
+    }
+
+    .hero-content p {
+      font-size: 0.625rem;
+    }
+
+    .login-container {
+      margin: 0.5rem 0.25rem 1.5rem 0.25rem;
+    }
+
+    .form-heading {
+      font-size: 1.1rem;
+    }
+
+    .form-body {
+      padding: 0.85rem 0.7rem;
+    }
+
+    .form-section {
+      padding: 0.85rem 0.75rem;
+    }
+
+    .submit-section {
+      padding: 0.85rem 0.7rem;
+    }
+
+    .form-control, .form-select {
+      padding: 0.6rem 0.75rem 0.6rem 2.3rem;
+      font-size: 0.813rem;
+    }
+  }
+
 </style>
 
 <!-- Hero Section -->

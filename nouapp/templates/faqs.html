@@ -1,0 +1,613 @@
+{% extends 'parent.html' %}
+{% load static %}
+{% block body %}
+<style>
+  :root {
+    --primary-blue: #1e40af;
+    --secondary-blue: #3b82f6;
+    --accent-blue: #60a5fa;
+    --dark-blue: #1e3a8a;
+    --light-blue: #dbeafe;
+    --yellow: #fbbf24;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+  }
+
+  /* Hero Section */
+  .faq-hero {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    padding: 4rem 1rem 3rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faq-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
+    opacity: 0.1;
+  }
+
+  .faq-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .faq-hero-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .faq-hero p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Main Container */
+  .faq-container {
+    background: var(--bg-light);
+    padding: 3rem 1rem;
+    min-height: 60vh;
+  }
+
+  .faq-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Search Box */
+  .faq-search {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+  }
+
+  .search-box:focus-within {
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0 0 0 1rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .search-box i {
+    color: var(--text-light);
+    font-size: 1.2rem;
+  }
+
+  /* Category Tabs */
+  .faq-categories {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .category-btn {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .category-btn:hover {
+    border-color: var(--secondary-blue);
+    transform: translateY(-2px);
+  }
+
+  .category-btn.active {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border-color: var(--primary-blue);
+  }
+
+  /* FAQ Items */
+  .faq-section {
+    margin-bottom: 2rem;
+  }
+
+  .faq-section-title {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 5px 15px rgba(30, 64, 175, 0.1);
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    user-select: none;
+  }
+
+  .faq-question:hover {
+    color: var(--primary-blue);
+  }
+
+  .faq-question-text {
+    flex: 1;
+  }
+
+  .faq-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-blue);
+    font-weight: bold;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item.active .faq-icon {
+    background: var(--primary-blue);
+    color: white;
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-answer-content {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+  }
+
+  /* Contact Banner */
+  .faq-contact-banner {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 15px;
+    padding: 2.5rem;
+    text-align: center;
+    color: white;
+    margin-top: 3rem;
+  }
+
+  .faq-contact-banner h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .faq-contact-banner p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+  }
+
+  .contact-btn {
+    background: white;
+    color: var(--primary-blue);
+    border: none;
+    border-radius: 10px;
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: var(--primary-blue);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .faq-hero {
+      padding: 3rem 1rem 2rem;
+    }
+
+    .faq-hero h1 {
+      font-size: 2rem;
+    }
+
+    .faq-hero-icon {
+      font-size: 2.5rem;
+    }
+
+    .faq-container {
+      padding: 2rem 1rem;
+    }
+
+    .faq-section-title {
+      font-size: 1.25rem;
+    }
+
+    .faq-question {
+      padding: 1rem 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-answer-content {
+      padding: 0 1.25rem 1rem 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .category-btn {
+      padding: 0.625rem 1.25rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .faq-hero h1 {
+      font-size: 1.5rem;
+    }
+
+    .faq-hero-icon {
+      font-size: 2rem;
+    }
+
+    .faq-hero p {
+      font-size: 0.95rem;
+    }
+
+    .search-box {
+      padding: 0.875rem 1rem;
+    }
+
+    .search-box input {
+      font-size: 0.9rem;
+    }
+
+    .faq-contact-banner {
+      padding: 2rem 1.25rem;
+    }
+
+    .faq-contact-banner h3 {
+      font-size: 1.35rem;
+    }
+
+    .faq-contact-banner p {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+<!-- Hero Section -->
+<div class="faq-hero">
+  <span class="faq-hero-icon">❓</span>
+  <h1>Frequently Asked Questions</h1>
+  <p>Find quick answers to commonly asked questions and troubleshooting guides</p>
+</div>
+
+<!-- FAQ Container -->
+<div class="faq-container">
+  <div class="faq-wrapper">
+    <!-- Search Box -->
+    <div class="faq-search">
+      <div class="search-box">
+        <i class="fa fa-search"></i>
+        <input type="text" id="faqSearch" placeholder="Search for answers..." onkeyup="searchFAQs()">
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="faq-categories">
+      <button class="category-btn active" onclick="filterCategory('all')">All</button>
+      <button class="category-btn" onclick="filterCategory('admission')">Admission</button>
+      <button class="category-btn" onclick="filterCategory('courses')">Courses</button>
+      <button class="category-btn" onclick="filterCategory('technical')">Technical</button>
+      <button class="category-btn" onclick="filterCategory('fees')">Fees & Payment</button>
+    </div>
+
+    <!-- General FAQs -->
+    <div class="faq-section" data-category="admission">
+      <h3 class="faq-section-title">
+        <i class="fa fa-graduation-cap"></i>
+        Admission Related
+      </h3>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">What are the eligibility criteria for admission?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            The eligibility criteria vary by program. Generally, for undergraduate programs, you need to have completed 10+2 from a recognized board. For postgraduate programs, a bachelor's degree in a relevant field is required. Please check the specific program requirements on our courses page.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">How do I apply for admission?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            You can apply online through our portal. Click on the "Register" button, fill in your details, select your desired program, upload required documents, and submit the application form. You'll receive a confirmation email once your application is submitted.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">When does the admission process start?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Admissions typically open twice a year - for the January session (applications from October to December) and the July session (applications from April to June). Please check our announcements page for exact dates.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Courses FAQs -->
+    <div class="faq-section" data-category="courses">
+      <h3 class="faq-section-title">
+        <i class="fa fa-book"></i>
+        Courses & Study Materials
+      </h3>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">What courses are available?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We offer a wide range of undergraduate and postgraduate programs in various disciplines including Arts, Science, Commerce, Management, and Computer Applications. Visit our courses section for a complete list of available programs.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">How do I access study materials?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            After logging into your student portal, navigate to the "Study Materials" section. All course materials, notes, and resources are available for download. Materials are organized by program, branch, and year for easy access.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">Are the courses recognized?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes, all our courses are recognized by UGC-DEB (University Grants Commission - Distance Education Bureau) and are valid for higher education and employment purposes across India.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical FAQs -->
+    <div class="faq-section" data-category="technical">
+      <h3 class="faq-section-title">
+        <i class="fa fa-laptop"></i>
+        Technical Support
+      </h3>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">I forgot my password. What should I do?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Click on the "Forgot Password" link on the login page. Enter your registered email ID or user ID, and you'll receive a password reset link. Follow the instructions in the email to set a new password.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">Why can't I download study materials?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Make sure you're logged in with valid credentials. Check your internet connection and ensure pop-ups are not blocked in your browser. If the issue persists, try clearing your browser cache or contact technical support.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">Which browsers are supported?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Our portal works best on the latest versions of Google Chrome, Mozilla Firefox, Microsoft Edge, and Safari. We recommend keeping your browser updated for the best experience.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fees FAQs -->
+    <div class="faq-section" data-category="fees">
+      <h3 class="faq-section-title">
+        <i class="fa fa-credit-card"></i>
+        Fees & Payment
+      </h3>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">What are the course fees?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Course fees vary depending on the program you choose. Please refer to the fee structure available on our website or contact our admission office for detailed information about specific program fees.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">What payment methods are accepted?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We accept online payments through credit/debit cards, net banking, UPI, and digital wallets. You can also pay through demand draft in favor of "Nalanda Open University" payable at Patna.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-question-text">Is there any refund policy?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Refund requests are considered on a case-by-case basis within 15 days of payment. A processing fee may be deducted. Please refer to our refund policy document or contact the accounts department for detailed information.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Banner -->
+    <div class="faq-contact-banner">
+      <h3>Still Have Questions?</h3>
+      <p>Can't find the answer you're looking for? Our support team is here to help!</p>
+      <a href="{% url 'nouapp:contactus' %}" class="contact-btn">
+        <i class="fa fa-envelope"></i> Contact Support
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Toggle FAQ Answer
+function toggleFAQ(element) {
+  const faqItem = element.parentElement;
+  const allFAQs = document.querySelectorAll('.faq-item');
+  
+  // Close all other FAQs
+  allFAQs.forEach(item => {
+    if (item !== faqItem) {
+      item.classList.remove('active');
+    }
+  });
+  
+  // Toggle current FAQ
+  faqItem.classList.toggle('active');
+}
+
+// Search FAQs
+function searchFAQs() {
+  const input = document.getElementById('faqSearch');
+  const filter = input.value.toLowerCase();
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question-text').textContent.toLowerCase();
+    const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+    
+    if (question.includes(filter) || answer.includes(filter)) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// Filter by Category
+function filterCategory(category) {
+  const sections = document.querySelectorAll('.faq-section');
+  const buttons = document.querySelectorAll('.category-btn');
+  
+  // Update active button
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // Show/hide sections
+  if (category === 'all') {
+    sections.forEach(section => section.style.display = 'block');
+  } else {
+    sections.forEach(section => {
+      if (section.getAttribute('data-category') === category) {
+        section.style.display = 'block';
+      } else {
+        section.style.display = 'none';
+      }
+    });
+  }
+}
+</script>
+
+{% endblock body %}

@@ -14,40 +14,36 @@
   }
 
   /* Hero Section */
-  .home {
-    background-image: linear-gradient(rgba(30, 64, 175, 0.6), rgba(30, 58, 138, 0.6)), url(../static/images/bookslibrary.jpg);
+   .home {
+    background-image: linear-gradient(rgba(30, 64, 175, 0.5), rgba(30, 58, 138, 0.6)),
+                  url(../static/images/bookslibrary.jpg);
     width: 100%;
-    min-height: 37vh;
+    min-height: 40vh;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
     position: relative;
     overflow: hidden;
+    padding: 3rem 1rem;
   }
 
-  .home h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    animation: fadeInDown 1s ease-out;
+  .home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.2), transparent);
+    animation: pulse 4s ease-in-out infinite;
   }
 
-  .home p {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 0.5rem;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-    animation: fadeInUp 1s ease-out 0.3s both;
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
   }
-
-  @keyframes fadeInDown { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
-  @keyframes fadeInUp { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
 
   .hero-content {
     position: relative;
@@ -58,7 +54,7 @@
     max-width: 1000px;
     width: 100%;
   }
-  
+
   .hero-content h3 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -72,11 +68,47 @@
     gap: 0.75rem;
     flex-wrap: wrap;
   }
-  
+
+  .hero-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
   .hero-text {
     display: inline-block;
-    flex: 1;
-    min-width: 0;
+  }
+
+  .hero-content p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    opacity: 0.95;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out 0.3s both;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Registration Form Container */
@@ -434,24 +466,50 @@
       margin: 2.5rem auto 4rem auto;
     }
   }
+   @media (max-width: 992px) {
+    .home {
+      min-height: 35vh;
+      padding: 2.5rem 1rem;
+    }
+
+    .hero-content h3 {
+      font-size: 2rem;
+    }
+
+    .hero-icon {
+      font-size: 2rem;
+    }
+
+    .hero-content p {
+      font-size: 1.125rem;
+    }
+  }
 
   @media (max-width: 768px) {
-    .home {
+   .home {
       min-height: 30vh;
+      padding: 2rem 1rem;
     }
-    
-    .home h3 { 
-      font-size: 1.5rem;
-      gap: 0.5rem;
-    }
-    
-    .home p { 
-      font-size: 0.85rem;
-    }
-    
+
     .hero-content {
       padding: 1rem;
     }
+
+    .hero-content h3 {
+      font-size: 1.5rem;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-icon {
+      font-size: 1.5rem;
+    }
+
+    .hero-content p {
+      font-size: 0.938rem;
+      line-height: 1.5;
+    }
+
     
     .registration-container { 
       margin: 1.5rem 1rem 3rem 1rem;
@@ -527,16 +585,57 @@
     }
   }
 
-  @media (max-width: 480px) {
-    .home h3 { 
+   @media (max-width: 576px) {
+    .home {
+      min-height: 28vh;
+      padding: 1.5rem 0.75rem;
+    }
+
+    .hero-content {
+      padding: 0.75rem 0.5rem;
+    }
+
+    .hero-content h3 {
       font-size: 1.25rem;
-      flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.4rem;
+      line-height: 1.3;
+      margin-bottom: 0.875rem;
     }
-    
-    .home p { 
-      font-size: 0.75rem;
+
+    .hero-icon {
+      font-size: 1.25rem;
     }
+
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-content p {
+      font-size: 0.813rem;
+      line-height: 1.4;
+    }
+  }
+
+
+  @media (max-width: 480px) {
+    .home {
+    min-height: 30vh;
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .hero-content h3 { 
+    font-size: 1.35rem;
+    gap: 0.4rem;
+  }
+  
+  .hero-icon {
+    font-size: 1.35rem;
+  }
+  
+  .hero-content p { 
+    font-size: 0.85rem;
+  }
     
     .registration-container {
       margin: 1rem 0.5rem 2rem 0.5rem;
@@ -586,8 +685,39 @@
       padding: 0.65rem 1rem;
     }
   }
+   @media (max-width: 400px) {
+    .home {
+      min-height: 26vh;
+      padding: 1.25rem 0.5rem;
+    }
+
+    .hero-content h3 {
+      font-size: 1.125rem;
+      gap: 0.35rem;
+    }
+
+    .hero-icon {
+      font-size: 1.125rem;
+    }
+
+    .hero-content p {
+      font-size: 0.75rem;
+    }
+  }
+  
 
   @media (max-width: 360px) {
+       .hero-content h3 {
+      font-size: 1rem;
+    }
+
+    .hero-icon {
+      font-size: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 0.688rem;
+    }
     .form-heading {
       font-size: 1.1rem;
       letter-spacing: 0.3px;

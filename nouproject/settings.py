@@ -76,21 +76,38 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "nouproject.wsgi.application"
 
+# Database
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+# Database - AFTER (PostgreSQL)
 
 # Database Configuration
 # Use PostgreSQL for both development and production
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DATABASE_NAME", "lms_nalanda"),
+        "NAME": os.getenv("DATABASE_NAME", "lms_nalanda_db"),
         "USER": os.getenv("DATABASE_USER", "lms_user"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD", "lms_secure_password_2024"),
+        "PASSWORD": os.getenv("DATABASE_PASSWORD", "NalandaLMS2024!"),
         "HOST": os.getenv("DATABASE_HOST", "localhost"),
         "PORT": os.getenv("DATABASE_PORT", "5432"),
         "OPTIONS": {
             "connect_timeout": 60,
         }
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'lms_db',
+    #     'USER': 'lms_user',
+    #     'PASSWORD': 'lms_password',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
 }
 
 # Override with DATABASE_URL if provided (for production deployments like Render)

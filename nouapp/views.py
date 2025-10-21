@@ -361,3 +361,7 @@ def custom_404_view(request, exception):
 def resources(request):
     ns = News.objects.all()  # if you want to show news as in other pages
     return render(request, "resources.html", locals())
+
+#for faqs 
+def faqs(request):
+    return render(request, 'faqs.html')

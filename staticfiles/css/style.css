@@ -13,6 +13,7 @@
 [data-bs-theme="light"] .navbar {
   background-color: #ffffff !important;
 }
+
 [data-bs-theme="light"] .navbar-nav .nav-link {
   color: #212529 !important; /* dark text for light mode */
 }
@@ -20,6 +21,7 @@
 [data-bs-theme="dark"] .navbar {
   background-color: #000000 !important;
 }
+
 [data-bs-theme="dark"] .navbar-nav .nav-link {
   color: #f8f9fa !important; /* white text for dark mode */
 }
@@ -67,37 +69,16 @@
   border: 1px solid var(--bs-border-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 .card-title {
   font-weight: 600;
 }
+
 /* Logo fix */
 .navbar-brand img {
   height: 45px; /* smaller height */
   width: auto;
   object-fit: contain;
-}
-/* ================= Fix Unequal Height in UG COURSE Cards ================= */
-.ug-courses-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch; /* make all columns same height */
-}
-
-.ug-courses-row > [class*="col-"] {
-  display: flex;
-}
-
-.ug-courses-row .card {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.ug-courses-row .card-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 /* ================= Footer ================= */
@@ -109,42 +90,290 @@ footer {
   border-top: 1px solid var(--bs-border-color);
 }
 
-/* ======================================================= */
-/* ====== HOVER EFFECTS & TRANSITIONS (ADDED) ====== */
-/* ======================================================= */
-
-/* 1. Add smooth transitions to elements for clean animations */
-.navbar-nav .nav-link,
-.card,
-.navbar-brand,
-footer a {
-    transition: all 0.2s ease-in-out;
+/* Force theme compliance for problematic sections */
+[data-bs-theme="dark"] .testimonial-card,
+[data-bs-theme="dark"] .service-card,
+[data-bs-theme="dark"] .about-section,
+[data-bs-theme="dark"] .about-info {
+  background: var(--bs-body-bg) !important;
+  color: var(--bs-body-color) !important;
+  border-color: var(--bs-border-color) !important;
 }
 
-/* 2. Navbar link hover effect */
-/* Adds a subtle lift and fades slightly when hovered */
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link:focus { /* :focus is for accessibility */
-    transform: translateY(-2px);
-    opacity: 0.8;
+[data-bs-theme="dark"] .testimonial-card p,
+[data-bs-theme="dark"] .service-card p,
+[data-bs-theme="dark"] .about-section p,
+[data-bs-theme="dark"] .about-info p {
+  color: var(--bs-body-color) !important;
 }
 
-/* 3. Card hover effect */
-/* Lifts the card and adds a more prominent shadow */
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+/* ================= Enhanced Dark Theme Support ================= */
+[data-bs-theme="dark"] {
+  --bs-body-color: #f8f9fa;
+  --bs-body-bg: #121212;
+  --bs-border-color: #444;
 }
 
-/* 4. Brand logo hover effect */
-/* Makes the logo slightly larger on hover */
-.navbar-brand:hover {
-    transform: scale(1.05);
+/* Force dark theme for all sections */
+[data-bs-theme="dark"] .about-section,
+[data-bs-theme="dark"] .services-section,
+[data-bs-theme="dark"] .testimonials-section,
+[data-bs-theme="dark"] .support-section,
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] .service-card,
+[data-bs-theme="dark"] .testimonial-card,
+[data-bs-theme="dark"] .support-card {
+  background-color: var(--bs-body-bg) !important;
+  color: var(--bs-body-color) !important;
+  border-color: var(--bs-border-color) !important;
 }
 
-/* 5. Footer link hover effect */
-/* Underlines links in the footer on hover */
-footer a:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+/* Ensure text colors in dark mode */
+[data-bs-theme="dark"] .about-section h1,
+[data-bs-theme="dark"] .about-section h2,
+[data-bs-theme="dark"] .about-section h3,
+[data-bs-theme="dark"] .about-section p,
+[data-bs-theme="dark"] .services-section h1,
+[data-bs-theme="dark"] .services-section h2,
+[data-bs-theme="dark"] .services-section h3,
+[data-bs-theme="dark"] .services-section p,
+[data-bs-theme="dark"] .service-card h4,
+[data-bs-theme="dark"] .service-card p,
+[data-bs-theme="dark"] .testimonial-card h4,
+[data-bs-theme="dark"] .testimonial-card p {
+  color: var(--bs-body-color) !important;
+}
+
+/* Section headers in dark mode */
+[data-bs-theme="dark"] .section-header h2 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .section-header p {
+  color: #bcd6f5 !important;
+}
+
+/* Service cards in dark mode */
+[data-bs-theme="dark"] .service-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+[data-bs-theme="dark"] .service-card:hover {
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+/* ================= About Section Dark Theme Fixes ================= */
+[data-bs-theme="dark"] .about-section {
+  background: linear-gradient(to bottom, #071024 0%, #081426 100%) !important;
+}
+
+[data-bs-theme="dark"] .about-text-content h3 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .about-text-content p {
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .about-text-content strong {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .feature-item {
+  background: #2d2d2d !important;
+  border: 1px solid #444 !important;
+}
+
+[data-bs-theme="dark"] .feature-text h4 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .feature-text p {
+  color: #b0b0b0 !important;
+}
+
+[data-bs-theme="dark"] .feature-icon {
+  color: #64b5f6 !important;
+}
+
+[data-bs-theme="dark"] .feature-item:hover {
+  background: #3d3d3d !important;
+  border-color: #64b5f6 !important;
+}
+
+/* ================= Testimonials Dark Theme ================= */
+[data-bs-theme="dark"] .testimonials-section {
+  background: linear-gradient(to bottom, #071024 0%, #0b1220 100%) !important;
+}
+
+[data-bs-theme="dark"] .testimonial-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)) !important;
+  color: #e6eef8 !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  box-shadow: 0 10px 40px rgba(2,6,23,0.7) !important;
+}
+
+[data-bs-theme="dark"] .testimonial-card::before {
+  color: rgba(255,255,255,0.06) !important;
+}
+
+[data-bs-theme="dark"] .testimonial-text {
+  color: #d0d9e6 !important;
+}
+
+[data-bs-theme="dark"] .author-image {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6) !important;
+  background: linear-gradient(135deg, #1f2937, #374151) !important;
+  color: #fff !important;
+}
+
+[data-bs-theme="dark"] .author-info h4 {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .author-info p {
+  color: #a9bfda !important;
+}
+
+[data-bs-theme="dark"] .rating i {
+  color: #ffd966 !important;
+}
+
+[data-bs-theme="dark"] .testimonial-controls .control-btn {
+  background: rgba(255,255,255,0.03) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+  color: #dbeefe !important;
+}
+
+[data-bs-theme="dark"] .testimonial-dots .dot {
+  background: rgba(255,255,255,0.12) !important;
+}
+
+[data-bs-theme="dark"] .testimonial-dots .dot.active {
+  background: linear-gradient(135deg, #0ea5e9, #60a5fa) !important;
+}
+
+/* ================= Services Dark Theme ================= */
+[data-bs-theme="dark"] .services-section {
+  background: linear-gradient(180deg, #061321 0%, #071824 100%) !important;
+}
+
+[data-bs-theme="dark"] .service-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)) !important;
+  color: #e6eef8 !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  box-shadow: 0 10px 40px rgba(2,6,23,0.7) !important;
+}
+
+[data-bs-theme="dark"] .service-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 18px 50px rgba(2,6,23,0.8) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+[data-bs-theme="dark"] .service-card .service-icon {
+  background: linear-gradient(135deg, #0ea5e9, #0369a1) !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+[data-bs-theme="dark"] .service-card h4,
+[data-bs-theme="dark"] .service-card p,
+[data-bs-theme="dark"] .service-card .service-btn {
+  color: #eaf6ff !important;
+}
+
+[data-bs-theme="dark"] .service-btn {
+  background: linear-gradient(135deg, #0ea5e9, #0369a1) !important;
+  color: #fff !important;
+}
+
+/* ================= Support Section Dark Theme ================= */
+[data-bs-theme="dark"] .support-section {
+  background: linear-gradient(135deg, #060666 0%, #0056b3 100%) !important;
+}
+
+[data-bs-theme="dark"] .support-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-bs-theme="dark"] .support-card:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ================= Search Results Dark Theme ================= */
+[data-bs-theme="dark"] .search-results-dropdown {
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .search-result-item {
+  border-bottom: 1px solid #444 !important;
+}
+
+[data-bs-theme="dark"] .search-result-item:hover {
+  background: #3d3d3d !important;
+}
+
+[data-bs-theme="dark"] .search-result-title {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .search-result-desc {
+  color: #b0b0b0 !important;
+}
+
+[data-bs-theme="dark"] .search-result-category {
+  background: #1e3a5f !important;
+  color: #90caf9 !important;
+}
+
+[data-bs-theme="dark"] .no-results {
+  color: #999 !important;
+}
+
+/* ================= Custom Scrollbar for Dark Theme ================= */
+[data-bs-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 10px;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #0056b3;
+  border-radius: 10px;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #004494;
+}
+
+/* ================= Responsive Design ================= */
+@media (max-width: 768px) {
+  [data-bs-theme="dark"] .about-section,
+  [data-bs-theme="dark"] .services-section,
+  [data-bs-theme="dark"] .testimonials-section,
+  [data-bs-theme="dark"] .support-section {
+    padding: 50px 0 !important;
+  }
+}
+
+/* ================= Utility Classes ================= */
+.text-theme-aware {
+  color: var(--bs-body-color) !important;
+}
+
+.bg-theme-aware {
+  background-color: var(--bs-body-bg) !important;
+}
+
+.border-theme-aware {
+  border-color: var(--bs-border-color) !important;
 }

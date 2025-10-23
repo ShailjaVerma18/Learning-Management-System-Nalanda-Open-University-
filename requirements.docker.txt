@@ -1,0 +1,42 @@
+# Core Django Framework
+Django>=4.0,<5.0
+
+# Database
+psycopg2-binary>=2.9.5
+dj-database-url>=2.0.0
+
+# User Authentication & Authorization
+django-allauth>=0.54.0
+
+# File Upload & Media Handling
+Pillow>=9.4.0
+
+# Forms & Validation
+django-crispy-forms>=2.0
+crispy-bootstrap4>=2022.1
+
+# Timezone Support
+pytz>=2023.3
+
+# Development Tools
+python-decouple>=3.8
+
+# Security
+django-cors-headers>=4.0.0
+
+# Web Server for Production
+gunicorn>=20.1.0
+whitenoise>=6.4.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# PDF Generation
+reportlab>=4.0.0
+
+# File handling
+pdf2image>=1.17.0
+python-magic>=0.4.27
+
+# Extensions
+django-extensions>=3.2.0

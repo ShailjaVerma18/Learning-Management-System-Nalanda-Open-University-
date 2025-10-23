@@ -32,6 +32,15 @@ services:
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_PORT=5432
+      # Default values (will be overridden by .env file)
+      - DATABASE_NAME=${DATABASE_NAME:-lms_nalanda_db}
+      - DATABASE_USER=${DATABASE_USER:-lms_user}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD:-lms_password}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-lms_nalanda_db}
+      - POSTGRES_USER=${POSTGRES_USER:-lms_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-lms_password}
 
 volumes:
   postgres_data:

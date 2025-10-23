@@ -4,6 +4,14 @@ echo Nalanda LMS - Docker Setup
 echo ========================================
 echo.
 
+REM Check if .env file exists, if not create from .env.example
+if not exist .env (
+    echo Creating .env file from .env.example...
+    copy .env.example .env
+    echo .env file created successfully!
+    echo.
+)
+
 REM Check if Docker is running
 docker info >nul 2>&1
 if %errorlevel% neq 0 (

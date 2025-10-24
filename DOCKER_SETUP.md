@@ -26,6 +26,7 @@ Complete guide to run the Learning Management System in Docker containers.
 
 3. **Access the application:**
    - URL: http://localhost:8000
+     (Incase not shown then wait up to 5 mins)
    <!-- - Admin: `admin` / `admin123` -->
 
 ### Option 2: Manual Setup
@@ -42,7 +43,7 @@ Complete guide to run the Learning Management System in Docker containers.
    docker-compose up --build -d
    ```
 
-4. **Wait 30 seconds** for initialization
+4. **Wait 60 seconds to 4-5 mins** for initialization
 
 5. **Open browser:**
    ```
@@ -418,20 +419,6 @@ docker system prune -a
 - [Django in Docker](https://docs.docker.com/samples/django/)
 - [PostgreSQL Docker](https://hub.docker.com/_/postgres)
 - [Docker Compose Reference](https://docs.docker.com/compose/compose-file/)
-
-## 🎯 Next Steps
-
-After successful setup:
-
-1. ✅ Access http://localhost:8000
-2. ✅ Login with admin/admin123
-3. ✅ Explore admin panel
-4. ✅ Create test data
-5. ✅ Test student registration
-6. ✅ Upload course materials
-7. ✅ Try the chatbot
-
----
 
 **Need help?** Check logs: `docker-compose logs -f`  
 **Everything working?** Start developing! 🚀

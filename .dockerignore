@@ -1,0 +1,74 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env.local
+.env.*.local
+
+# Database
+*.sqlite3
+db.sqlite3
+db.sqlite3-journal
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+*.md
+LICENSE
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+
+# Logs
+*.log
+
+# Test coverage
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# OS specific
+Thumbs.db
+.DS_Store
+
+# Node (if any)
+node_modules/
+npm-debug.log
+
+# Misc
+.mypy_cache/
+.tox/

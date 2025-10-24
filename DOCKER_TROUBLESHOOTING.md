@@ -2,6 +2,35 @@
 
 ## First-Time Installation Issues
 
+### Problem: Entrypoint script not found
+**Error:** `exec /docker-entrypoint.sh: no such file or directory`
+
+**Symptoms:**
+- Web container starts and immediately stops
+- Error appears in logs: "exec /docker-entrypoint.sh: no such file or directory"
+- Container status shows "Exited (1)"
+
+**Cause:**
+This happens when the `docker-entrypoint.sh` file has Windows line endings (CRLF) instead of Unix line endings (LF). Docker/Linux cannot execute scripts with Windows line endings.
+
+**Solution:**
+The Dockerfile now automatically fixes this during build. Simply rebuild:
+```cmd
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+**Why this happens:**
+- Windows editors (Notepad, some Git configurations) add CRLF line endings
+- Linux/Docker requires LF line endings for shell scripts
+- The `.gitattributes` file now prevents this for future clones
+
+**Prevention:**
+- The project now includes `.gitattributes` to ensure proper line endings
+- The Dockerfile contains `sed -i 's/\r$//'` to auto-convert during build
+- Clone with Git (don't download as ZIP) to preserve line endings
+
 ### Problem: `.env` file missing error
 **Solution:**
 1. Run `docker-start.bat` - it will automatically create `.env` from `.env.example`

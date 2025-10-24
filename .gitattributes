@@ -1,0 +1,24 @@
+# Ensure shell scripts always have LF line endings (for Docker)
+*.sh text eol=lf
+docker-entrypoint.sh text eol=lf
+
+# Python files
+*.py text eol=lf
+
+# Windows batch files should have CRLF
+*.bat text eol=crlf
+
+# Other text files
+*.md text
+*.txt text
+*.json text
+*.yml text
+*.yaml text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

@@ -36,9 +36,10 @@ RUN mkdir -p /app/staticfiles /app/media
 RUN useradd -m -u 1000 django && \
     chown -R django:django /app
 
-# Make entrypoint executable
+# Copy and fix entrypoint script (convert line endings from CRLF to LF)
 COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+RUN sed -i 's/\r$//' /docker-entrypoint.sh && \
+    chmod +x /docker-entrypoint.sh
 
 # Switch to non-root user
 USER django

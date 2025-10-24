@@ -1,4 +1,4 @@
-# 🐳 Nalanda Open University LMS - Docker Setup Guide
+# 🐳 LMS - Docker Setup Guide
 
 > **🚀 Quick Start:** 1) Start Docker Desktop → 2) Double-click `docker-start.bat` → 3) Open http://localhost:8000 
 <!-- → Login: admin/admin123 -->
@@ -274,6 +274,31 @@ docker-compose up
 ```
 
 ### Container Crashes on Startup
+
+**Error:** `exec /docker-entrypoint.sh: no such file or directory`
+
+**Cause:** Windows line endings (CRLF) in shell script instead of Unix (LF)
+
+**Solution:**
+```cmd
+# Rebuild the image (Dockerfile now auto-fixes line endings)
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+**Alternative (if issue persists):**
+The project includes `.gitattributes` to prevent this. If you downloaded as ZIP instead of cloning with Git:
+```cmd
+# Convert line endings manually (requires Git Bash or WSL)
+dos2unix docker-entrypoint.sh
+# OR
+sed -i 's/\r$//' docker-entrypoint.sh
+
+# Then rebuild
+docker-compose build --no-cache
+docker-compose up -d
+```
 
 **Check logs:**
 ```cmd
